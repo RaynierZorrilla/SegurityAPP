@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>acerca</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Acerca de</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Información del Oficial</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="oficial.foto" alt="Foto del oficial">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ oficial.nombre }} {{ oficial.apellido }}</h2>
+            <p>Matrícula: {{ oficial.matricula }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Reflexión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ reflexion }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+</ion-content>

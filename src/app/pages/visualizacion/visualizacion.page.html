@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>visualizacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Visualización de Incidencias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let incidencia of incidencias" (click)="viewIncidencia(incidencia)">
+        <ion-label>
+          <h2>{{ incidencia.titulo }}</h2>
+          <p>{{ incidencia.fecha | date }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  
+    <ion-modal [isOpen]="selectedIncidencia !== null" (didDismiss)="selectedIncidencia = null">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ selectedIncidencia?.titulo }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content *ngIf="selectedIncidencia">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ selectedIncidencia.titulo }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ selectedIncidencia.fecha | date }}</p>
+            <p>{{ selectedIncidencia.descripcion }}</p>
+            <img *ngIf="selectedIncidencia.foto" [src]="selectedIncidencia.foto" alt="Foto de la incidencia">
+            <audio *ngIf="selectedIncidencia.audio" [src]="selectedIncidencia.audio" controls></audio>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
+    </ion-modal>
+  </ion-content>
+  
+</ion-content>
